@@ -1,4 +1,4 @@
-# active-slider
+# Active Slider
 Slider for CSS masters.
 
 Active-Slider:
