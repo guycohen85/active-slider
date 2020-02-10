@@ -8,11 +8,13 @@ Active-Slider:
 
 Finaly, as a CSS master, it will be your responsibilty to add your animation or what ever you need to do with the active elements.
 
-# How to use
+## NPM
 
-# NPM
+```
 npm install active-slider
+```
 
+```javascript
 import ActiveSlider from 'active-slider';
 
 new ActiveSlider({
@@ -37,3 +39,6 @@ new ActiveSlider({
     //[optional] [boolean]  -  LOOP SLIDER(default true)
     loop = true                   
 }); 
+
+```
+
