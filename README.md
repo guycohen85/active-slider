@@ -30,7 +30,7 @@ new ActiveSlider({
     //[optional] [array OR string]  -  ON CLICK(bullet,text,etc..) SET ELEMENT AS ACTIVE(not related to prev|next buttons)
     clickElementActiveClass: '.slide-image',
 
-    //[optional] [array] - INSERT PREVIOUS AND NEXT BUTTONS ['.prev', '.next']
+    //[optional] [array] - PREVIOUS AND NEXT BUTTONS ['.prev', '.next']
     prevNextButtons: ['.prev', '.next'],         
 
     //[optional] [number] ACTIVATE AUTOSLIDER IN MILLISECONDS
