@@ -37,7 +37,7 @@ new ActiveSlider({
     autoSlider: 3500,
     
     //[optional] [boolean]  -  LOOP SLIDER(default true)
-    loop = true                   
+    loop: true                   
 }); 
 
 ```
