@@ -11,6 +11,23 @@ For example: slide-images must have the same number of elements as the bullets.
 
 Finaly, as a CSS master, it will be your responsibilty to add your animation or what ever you need to do with the active elements.
 
+
+## NPM
+
+```
+npm install active-slider
+```
+
+```javascript
+import ActiveSlider from 'active-slider';
+
+new ActiveSlider({
+    sliderWrapper: '.slider-wrapper', 
+    activeElements: ['.slide-image', '.bullet'],
+}); 
+
+```
+
 ## Parameters
 - sliderWrapper
 (string)(required) - Select the slider wrapper element.
@@ -44,18 +61,3 @@ example: ['.prev', '.next']
 (boolean)(optional) - Loop slider (default true)
 default: true
 
-## NPM
-
-```
-npm install active-slider
-```
-
-```javascript
-import ActiveSlider from 'active-slider';
-
-new ActiveSlider({
-    sliderWrapper: '.slider-wrapper', 
-    activeElements: ['.slide-image', '.bullet'],
-}); 
-
-```
