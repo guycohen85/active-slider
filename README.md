@@ -13,15 +13,11 @@ Finaly, as a CSS master, it will be your responsibilty to add your animation or 
 
 ## Parameters
 - sliderWrapper
-
 (string)(required) - Select the slider wrapper element.
-
 example: '.slider'
     
 - activeElements
-
 (array|string)(required) - Select elements to add the active class.
-
 example: ['.slide-image', '.bullet']
     
 - swipeArea
