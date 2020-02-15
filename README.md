@@ -2,14 +2,12 @@
 Slider for CSS masters.
 
 Active-Slider:
-- Will add an "active" class  for your desired HTML tags.
-- The "active" class can be activated by an auto slide, prev-next buttons or element click.
-- Will not create Html tags or any other sort of Css or Js animation.
+- The Active Class - Active-Slider has one job, adding an "active" class for your desired HTML tags.
+- Keep your HTML beautiful - Active Slider will not inject HTML, CSS or JS code.
+- Full control - As a CSS master, you'll have a full control over your slider with no injected Html or Css.
 
 There is one rule, slides group must have the same number of elements.
 For example: slide-images must have the same number of bullets elements.
-
-Finaly, as a CSS master, it will be your responsibilty to add your animation or what ever you need to do with the active elements.
 
 
 ## NPM
