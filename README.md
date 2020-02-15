@@ -7,7 +7,7 @@ Active-Slider:
 - Will not create Html tags or any other sort of Css or Js animation.
 
 There is one rule, slides group must have the same number of elements.
-For example: slide-images must have the same number of elements as the bullets.
+For example: slide-images must have the same number of bullets elements.
 
 Finaly, as a CSS master, it will be your responsibilty to add your animation or what ever you need to do with the active elements.
 
