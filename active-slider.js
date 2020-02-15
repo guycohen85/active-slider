@@ -7,7 +7,7 @@ class ActiveSlider {
         prevNextButtons = false, //(array)(optional) - Select the previous and next buttons. example: ['.prev', '.next']
         autoSlide = 3500, //(number|boolean)(optional) - Default time between slides is 3500 milliseconds. set to false if no need an auto slide. default: 3500
         stopAutoSlideOnClick = false, //(array)(optional) - Select the elements to be the listeners for the click event in order to stop the auto slide. example: ['.prev', '.next']
-        loop = true //Loop slider (default true) default: true
+        loop = true //(boolean)(optional) - Loop slider. default: true
     }) {
         this.$slider = document.querySelector(sliderWrapper);
         this.playSlider;
