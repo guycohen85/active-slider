@@ -58,3 +58,5 @@ example: ['.prev', '.next']
 (boolean)(optional) - Loop slider.
 default: true
 
+## Example
+https://codepen.io/guycohen85/pen/GRJoxvw
