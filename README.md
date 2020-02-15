@@ -58,6 +58,6 @@ default: 3500
 example: ['.prev', '.next']
 
 - loop
-(boolean)(optional) - Loop slider (default true)
+(boolean)(optional) - Loop slider.
 default: true
 
