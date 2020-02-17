@@ -26,9 +26,10 @@ class ActiveSlider {
             this.slideItems = activeElements.map(slideItem => this.$slider.querySelectorAll(slideItem));
             this.slideClassName = activeElements[0];
         } else {
-            this.slideItems = this.$slider.querySelectorAll(activeElements);
+            this.slideItems = [this.$slider.querySelectorAll(activeElements)];
             this.slideClassName = activeElements;
         }
+        this.slideGroupCount = this.slideItems.length;
         this.slideCount = this.slideItems[0].length;
 
         //Set first element as "active" in all slide items(images,bullets,titles,etc...)
@@ -182,9 +183,9 @@ class ActiveSlider {
         var slideIndex = '';
         this.removeAllActiveClass();
 
-        for (let io = 0; io < this.slideCount; io++) {
+        for (let io = 0; io < this.slideGroupCount; io++) {
             for (let i = 0; i < this.slideCount; i++) {
-                if (event.target.isSameNode(this.slideItems[io][i])) {
+                if (event.currentTarget.isSameNode(this.slideItems[io][i])) {
                     slideIndex = i;
                     this.$slider.dataset.slide = slideIndex + 1;
                     break;
@@ -195,7 +196,7 @@ class ActiveSlider {
             }
         }
 
-        for (let io = 0; io < this.slideCount; io++) {
+        for (let io = 0; io < this.slideGroupCount; io++) {
             this.slideItems[io][slideIndex].classList.add('active');
         }
     }
