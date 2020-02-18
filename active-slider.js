@@ -7,7 +7,8 @@ class ActiveSlider {
         prevNextButtons = false, //(array)(optional) - Select the previous and next buttons. example: ['.prev', '.next']
         autoSlide = 3500, //(number|boolean)(optional) - Default time between slides is 3500 milliseconds. set to false if no need an auto slide. default: 3500
         stopAutoSlideOnClick = false, //(array)(optional) - Select the elements to be the listeners for the click event in order to stop the auto slide. example: ['.prev', '.next']
-        loop = true //(boolean)(optional) - Loop slider. default: true
+        loop = true, //(boolean)(optional) - Loop slider. default: true
+        activeFirstSlide = true
     }) {
         this.$slider = document.querySelector(sliderWrapper);
         this.playSlider;
@@ -19,7 +20,7 @@ class ActiveSlider {
         this.loop = loop;
         this.slideClassName = '';
 
-        this.$slider.setAttribute("data-slide", 1);
+        
 
         //All elements that will be asiggned the "active" class(images,bullets,titles,etc...)
         if (Array.isArray(activeElements)) {
@@ -33,7 +34,10 @@ class ActiveSlider {
         this.slideCount = this.slideItems[0].length;
 
         //Set first element as "active" in all slide items(images,bullets,titles,etc...)
-        this.setFirstSlideActiveClass();
+        if(activeFirstSlide){
+            this.$slider.setAttribute("data-slide", 1);
+            this.setFirstSlideActiveClass();
+        }
 
         //Autoplay
         this.autoSliderTime = autoSlide;
