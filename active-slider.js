@@ -1,124 +1,120 @@
-class ActiveSlider {
+class ActiveElements {
     constructor({
-        sliderWrapper = '', //(string)(required) - Select the slider wrapper element. example: '.slider'
+        wrapper = '', //(string)(required) - Select the wrapper element. example: '.slider'
         activeElements = '', //(array|string)(required) - Select elements to add the active class. example: ['.slide-image', '.bullet']
         swipeArea = '', //(string)(optional) - Select the element that will be the swipe area. example: '.slide-images-container'
-        clickableElements = '', //(array|string)(optional) - Add the active class to the clicked slide. example: '.bullet'
+        clickableElements = '', //(array|string)(optional) - Add the active class to the clicked element. example: '.bullet'
         prevNextButtons = false, //(array)(optional) - Select the previous and next buttons. example: ['.prev', '.next']
-        autoSlide = 3500, //(number|boolean)(optional) - Default time between slides is 3500 milliseconds. set to false if no need an auto slide. default: 3500
-        stopAutoSlideOnClick = false, //(array)(optional) - Select the elements to be the listeners for the click event in order to stop the auto slide. example: ['.prev', '.next']
-        loop = true, //(boolean)(optional) - Loop slider. default: true
-        activeFirstSlide = true //(boolean)(optional) - Set to false in order to remove the active class from the first slide as default
+        autoPlay = 3500, //(number|boolean)(optional) - Default duration is 3500 milliseconds. set to false if no need for autoplay. default: 3500
+        stopAutoPlayOnClick = false, //(string|array)(optional) - Select the elements to be the listeners for the click event in order to stop the autoplay. example: ['.prev', '.next']
+        loop = true, //(boolean)(optional) - Loop elements. default: true
+        firstElementActive = true //(boolean)(optional) - Set to false in order to remove the active class from the first elements as default
     }) {
-        this.$slider = document.querySelector(sliderWrapper);
-        this.playSlider;
-        this.$prevBtn;
-        this.$nextBtn;
-        this.$swipeArea = (swipeArea) ? document.querySelector(swipeArea) : false;
+        this.wrapper = document.querySelector(wrapper);
+        this.autoPlaySpeed;
+        this.prevBtn;
+        this.nextBtn;
+        this.swipeArea = (swipeArea) ? document.querySelector(swipeArea) : false;
         this.clickableElements = clickableElements;
-        this.stopAutoSlideOnClick = stopAutoSlideOnClick;
+        this.stopAutoPlayOnClick = stopAutoPlayOnClick;
         this.loop = loop;
-        this.slideClassName = '';
+        this.elementClassName = '';
 
         
 
         //All elements that will be asiggned the "active" class(images,bullets,titles,etc...)
         if (Array.isArray(activeElements)) {
-            this.slideItems = activeElements.map(slideItem => this.$slider.querySelectorAll(slideItem));
-            this.slideClassName = activeElements[0];
+            this.activeElements = activeElements.map(el => this.wrapper.querySelectorAll(el));
+            this.elementClassName = activeElements[0];
         } else {
-            this.slideItems = [this.$slider.querySelectorAll(activeElements)];
-            this.slideClassName = activeElements;
+            this.activeElements = [this.wrapper.querySelectorAll(activeElements)];
+            this.elementClassName = activeElements;
         }
-        this.slideGroupCount = this.slideItems.length;
-        this.slideCount = this.slideItems[0].length;
+        this.elementsGroupCount = this.activeElements.length;
+        this.elementsCount = this.activeElements[0].length;
 
         //Set first element as "active" in all slide items(images,bullets,titles,etc...)
-        if(activeFirstSlide){
-            this.$slider.setAttribute("data-slide", 1);
-            this.setFirstSlideActiveClass();
+        if(firstElementActive){
+            this.wrapper.setAttribute("data-slide", 1);
+            this.firstSlideActive();
         }
 
         //Autoplay
-        this.autoSliderTime = autoSlide;
-        if (this.autoSliderTime) {
-            this.autoPlaySlider();
+        this.autoPlaySpeed = autoPlay;
+        if (this.autoPlaySpeed) {
+            this.startAutoPlay();
         }
 
         //Add |prev|next| buttons
         if (prevNextButtons) {
-            this.addPrevNextButtons(prevNextButtons);
+            this._addPrevNextButtons(prevNextButtons);
         }
 
         //Events
-        this.buttonsClick();
+        this._clickEvent();
+        this._swipeEvent();
     }
 
-    addPrevNextButtons(prevNextButtons) {
-        this.$prevBtn = document.querySelector(prevNextButtons[0]);
-        this.$prevBtn.addEventListener('click', () => {
+    _addPrevNextButtons(prevNextButtons) {
+        this.prevBtn = document.querySelector(prevNextButtons[0]);
+        this.prevBtn.addEventListener('click', () => {
             this.prevSlide();
         });
-        this.$nextBtn = document.querySelector(prevNextButtons[1]);
-        this.$nextBtn.addEventListener('click', () => {
+        this.nextBtn = document.querySelector(prevNextButtons[1]);
+        this.nextBtn.addEventListener('click', () => {
             this.nextSlide();
         });
     }
 
-    autoPlaySlider() {
-        var self = this;
-        
-        //Start autoslide
+    startAutoPlay() {  
         this.playSlider = setInterval(() => {
             this.nextSlide();
-        }, this.autoSliderTime);
-
-        //Stop autoslide
-        if(this.stopAutoSlideOnClick){
-            for (let io = 0; io < this.stopAutoSlideOnClick.length; io++) {
-                var elements = document.querySelectorAll(this.stopAutoSlideOnClick[io]);
+        }, this.autoPlaySpeed);
+        
+        if(this.stopAutoPlayOnClick){
+            this.stopAutoPlayOnClick = Array.isArray(this.stopAutoPlayOnClick) ? this.stopAutoPlayOnClick : [this.stopAutoPlayOnClick];
+            for (let io = 0; io < this.stopAutoPlayOnClick.length; io++) {
+                var elements = document.querySelectorAll(this.stopAutoPlayOnClick[io]);
                 for (let i = 0; i < elements.length; i++) {
-                    elements[i].addEventListener("click", removeAutoSlide);
-                    elements[i].addEventListener("touchstart", removeAutoSlide);
+                    elements[i].addEventListener("click", e => this.stopAutoPlay(e), {once : true} );
+                    elements[i].addEventListener("touchstart", e => this.stopAutoPlay(e), {once : true} );
                 }
             }
         }
-
-        function removeAutoSlide(e) {
-            self.$slider.removeEventListener(e.type, removeAutoSlide);
-            clearInterval(self.playSlider);
-        }
     }
 
-    buttonsClick() {
-        var self = this;
+    stopAutoPlay(e){
+        clearInterval(this.playSlider);
+    }
 
-        // On click(bullet,text,etc..) set element as ACTIVE
+    _clickEvent(){
         if (this.clickableElements) {
             if (Array.isArray(this.clickableElements)) {
                 this.clickableElements.forEach(function (items) {
                     document.querySelectorAll(items).forEach(el => {
                         el.addEventListener('click', (e) => {
-                            self.setSlideActiveClassByClick(e);
+                            this._setSlideActiveClassByClick(e);
                         });
                     });
                 });
             } else {
                 document.querySelectorAll(this.clickableElements).forEach(el => {
                     el.addEventListener('click', (e) => {
-                        self.setSlideActiveClassByClick(e);
+                        this._setSlideActiveClassByClick(e);
                     });
                 });
             }
         }
-        //touch events
-        if (this.$swipeArea) {
+    }
+
+    _swipeEvent(){
+        if (this.swipeArea) {
             this.touchstartX = 0;
-            this.$swipeArea.addEventListener('touchstart', function (event) {
+            this.swipeArea.addEventListener('touchstart', function (event) {
                 this.touchstartX = event.changedTouches[0].screenX;
             }, false);
 
-            this.$swipeArea.addEventListener('touchend', function (event) {
+            this.swipeArea.addEventListener('touchend', function (event) {
                 var touchendX = event.changedTouches[0].screenX;
                 if (touchendX <= this.touchstartX && (this.touchstartX - touchendX) > 25) {
                     self.nextSlide(); //Swiped left
@@ -132,34 +128,34 @@ class ActiveSlider {
     }
 
     removeAllActiveClass() {
-        this.slideItems.forEach(slideItem => {
+        this.activeElements.forEach(slideItem => {
             slideItem.forEach(el => {
                 el.classList.remove("active");
             });
         });
     }
 
-    setFirstSlideActiveClass() {
+    firstSlideActive() {
         this.removeAllActiveClass();
-        this.$slider.dataset.slide = 1;
-        this.slideItems.forEach(slideItem => {
+        this.wrapper.dataset.slide = 1;
+        this.activeElements.forEach(slideItem => {
             slideItem[0].classList.add("active");
         });
     }
 
-    setLastSlideActiveClass() {
+    lastSlideActive() {
         this.removeAllActiveClass();
-        this.$slider.dataset.slide = this.slideCount;
-        this.slideItems.forEach(slideItem => {
+        this.wrapper.dataset.slide = this.elementsCount;
+        this.activeElements.forEach(slideItem => {
             slideItem[slideItem.length - 1].classList.add("active");
         });
     }
 
-    setNextSlideActiveClass() {
-        this.$slider.dataset.slide = parseInt(this.$slider.dataset.slide) + 1;
-        this.slideItems.forEach(slideItem => {
+    _setNextSlideActiveClass() {
+        this.wrapper.dataset.slide = parseInt(this.wrapper.dataset.slide) + 1;
+        this.activeElements.forEach(slideItem => {
 
-            for (let i = 0; i < this.slideCount; i++) {
+            for (let i = 0; i < this.elementsCount; i++) {
                 if (slideItem[i].classList.contains('active')) {
                     slideItem[i].classList.remove('active');
                     slideItem[i].nextElementSibling.classList.add('active');
@@ -169,11 +165,11 @@ class ActiveSlider {
         });
     }
 
-    setPrevSlideActiveClass() {
-        this.$slider.dataset.slide = (parseInt(this.$slider.dataset.slide) === 1) ? this.slideCount : parseInt(this.$slider.dataset.slide) - 1;
-        this.slideItems.forEach(slideItem => {
+    _setPrevSlideActiveClass() {
+        this.wrapper.dataset.slide = (parseInt(this.wrapper.dataset.slide) === 1) ? this.elementsCount : parseInt(this.wrapper.dataset.slide) - 1;
+        this.activeElements.forEach(slideItem => {
 
-            for (let i = 0; i < this.slideCount; i++) {
+            for (let i = 0; i < this.elementsCount; i++) {
                 if (slideItem[i].classList.contains('active')) {
                     slideItem[i].classList.remove('active');
                     slideItem[i].previousElementSibling.classList.add('active');
@@ -183,15 +179,15 @@ class ActiveSlider {
         });
     }
 
-    setSlideActiveClassByClick(event) {
+    _setSlideActiveClassByClick(event) {
         var slideIndex = '';
         this.removeAllActiveClass();
 
-        for (let io = 0; io < this.slideGroupCount; io++) {
-            for (let i = 0; i < this.slideCount; i++) {
-                if (event.currentTarget.isSameNode(this.slideItems[io][i])) {
+        for (let io = 0; io < this.elementsGroupCount; io++) {
+            for (let i = 0; i < this.elementsCount; i++) {
+                if (event.currentTarget.isSameNode(this.activeElements[io][i])) {
                     slideIndex = i;
-                    this.$slider.dataset.slide = slideIndex + 1;
+                    this.wrapper.dataset.slide = slideIndex + 1;
                     break;
                 }
             }
@@ -200,30 +196,30 @@ class ActiveSlider {
             }
         }
 
-        for (let io = 0; io < this.slideGroupCount; io++) {
-            this.slideItems[io][slideIndex].classList.add('active');
+        for (let io = 0; io < this.elementsGroupCount; io++) {
+            this.activeElements[io][slideIndex].classList.add('active');
         }
     }
 
     nextSlide() {
-        var slideLastOfType = this.$slider.querySelector(this.slideClassName + '.active' + ':last-of-type');
+        var slideLastOfType = this.wrapper.querySelector(this.elementClassName + '.active' + ':last-of-type');
         if (slideLastOfType && !this.loop) {
             //do nothing
         } else if (slideLastOfType) {
-            this.setFirstSlideActiveClass();
+            this.firstSlideActive();
         } else {
-            this.setNextSlideActiveClass();
+            this._setNextSlideActiveClass();
         }
     }
 
     prevSlide() {
-        var slideFirstOfType = this.$slider.querySelector(this.slideClassName + '.active' + ':first-of-type');
+        var slideFirstOfType = this.wrapper.querySelector(this.elementClassName + '.active' + ':first-of-type');
         if (slideFirstOfType && !this.loop) {
             //do nothing
         } else if (slideFirstOfType) {
-            this.setLastSlideActiveClass();
+            this.lastSlideActive();
         } else {
-            this.setPrevSlideActiveClass();
+            this._setPrevSlideActiveClass();
         }
     }
 

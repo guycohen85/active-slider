@@ -1,0 +1,79 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+
+}
+
+.board {
+    padding-top: 20px;
+    background: #1d1e22;
+    height: 100vh;
+}
+
+.cards {
+    display: flex;
+    perspective: 1000px;
+    justify-content: center;
+}
+
+.card {
+    width: 100px;
+    height: 150px;
+    position: relative;
+    transition: transform .8s;
+    transform-style: preserve-3d;
+    margin: 10px;
+    transform: rotateY(180deg);
+    cursor: pointer;
+}
+
+.card.active {
+    transform: rotateY(0);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 6px;
+}
+
+.card-front {
+    background: #fff no-repeat 50%;
+}
+
+.card-front.carrot {
+    background-image: url('https://drive.google.com/uc?id=0B2RxVD_ySRqXeTBsTTd5dEhuWU03U3JmYmlRdmdZLWlFX2ZF&export=download');
+}
+
+.card-front.cucumber {
+    background-image: url('https://drive.google.com/uc?id=1wsiWYc85kzq6xfOEm8HPPdOBIoLbBaJl&export=download');
+}
+
+.card-front.onion {
+    background-image: url('https://drive.google.com/uc?id=17t3_VzdZYdWSChRvtJjzVjv7_fEETMDw&export=download');
+}
+
+.card-back {
+    background-image: url('https://drive.google.com/uc?id=1tJ6mVJnC6NccByrBn6Cw7OycG123CD_N&export=download');
+    background-size: 100px;
+    transform: rotateY(180deg);
+}
+
+.quotes {
+    max-width: 300px;
+    margin: auto;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.quote {
+    display: none;
+}
+
+.quote.active {
+    display: block;
+}
