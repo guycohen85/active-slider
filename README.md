@@ -26,8 +26,8 @@ new ActiveSlider({
 ```
 
 ## Parameters
-- sliderWrapper
-(string)(required) - Select the slider wrapper element.
+- wrapper
+(string)(required) - Select the wrapper element.
 Example: '.slider'
     
 - activeElements
@@ -39,27 +39,27 @@ Example: ['.slide-image', '.bullet']
 Example: '.slide-images-container'
 
 - clickableElements
-(array|string)(optional) -  Add the active class to the clicked slide.
+(array|string)(optional) -  Add the active class to the clicked element.
 Example: '.bullet'
 
 - prevNextButtons
 (array)(optional) - Select the previous and next buttons.
 Example: ['.prev', '.next']
 
-- autoSlide
-(number|boolean)(optional)  - Default time between slides is 3500 milliseconds. set to false if no need an auto slide.
+- autoPlay
+(number|boolean)(optional)  - Default duration is 3500 milliseconds. set to false if no need for autoplay.
 Default: 3500
 
-- stopAutoSlideOnClick
-(array)(optional) - Select the elements to be the listeners for the click event in order to stop the auto slide.
+- stopAutoPlayOnClick
+(string|array)(optional) - Select the elements to be the listeners for the click event in order to stop the autoplay.
 Example: ['.prev', '.next']
 
 - loop
-(boolean)(optional) - Loop slider.
+(boolean)(optional) - Loop elements.
 Default: true
 
-- activeFirstSlide
-(boolean)(optional) - Set to false in order to remove the active class from the first slide as default.
+- firstElementActive
+(boolean)(optional) - Set to false in order to remove the active class from the first elements as default.
 Default: true
 
 ## Example
