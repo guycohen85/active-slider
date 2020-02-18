@@ -58,5 +58,9 @@ Example: ['.prev', '.next']
 (boolean)(optional) - Loop slider.
 Default: true
 
+- activeFirstSlide
+(boolean)(optional) - Set to false in order to remove the active class from the first slide as default.
+Default: true
+
 ## Example
 https://codepen.io/guycohen85/pen/GRJoxvw

@@ -8,7 +8,7 @@ class ActiveSlider {
         autoSlide = 3500, //(number|boolean)(optional) - Default time between slides is 3500 milliseconds. set to false if no need an auto slide. default: 3500
         stopAutoSlideOnClick = false, //(array)(optional) - Select the elements to be the listeners for the click event in order to stop the auto slide. example: ['.prev', '.next']
         loop = true, //(boolean)(optional) - Loop slider. default: true
-        activeFirstSlide = true
+        activeFirstSlide = true //(boolean)(optional) - Set to false in order to remove the active class from the first slide as default
     }) {
         this.$slider = document.querySelector(sliderWrapper);
         this.playSlider;
