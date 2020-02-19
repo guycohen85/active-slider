@@ -33,10 +33,9 @@ class ActiveElements {
         this.elementsGroupCount = this.activeElements.length;
         this.elementsCount = this.activeElements[0].length;
 
-        //Set first element as "active" in all slide items(images,bullets,titles,etc...)
         if(firstElementActive){
-            this.wrapper.setAttribute("data-slide", 1);
-            this.firstSlideActive();
+            this.wrapper.setAttribute("data-active-element", 1);
+            this.firstElementActive();
         }
 
         //Autoplay
@@ -58,17 +57,17 @@ class ActiveElements {
     _addPrevNextButtons(prevNextButtons) {
         this.prevBtn = document.querySelector(prevNextButtons[0]);
         this.prevBtn.addEventListener('click', () => {
-            this.prevSlide();
+            this.prevElement();
         });
         this.nextBtn = document.querySelector(prevNextButtons[1]);
         this.nextBtn.addEventListener('click', () => {
-            this.nextSlide();
+            this.nextElement();
         });
     }
 
     startAutoPlay() {  
-        this.playSlider = setInterval(() => {
-            this.nextSlide();
+        this.interval = setInterval(() => {
+            this.nextElement();
         }, this.autoPlaySpeed);
         
         if(this.stopAutoPlayOnClick){
@@ -84,7 +83,7 @@ class ActiveElements {
     }
 
     stopAutoPlay(e){
-        clearInterval(this.playSlider);
+        clearInterval(this.interval);
     }
 
     _clickEvent(){
@@ -93,14 +92,14 @@ class ActiveElements {
                 this.clickableElements.forEach(function (items) {
                     document.querySelectorAll(items).forEach(el => {
                         el.addEventListener('click', (e) => {
-                            this._setSlideActiveClassByClick(e);
+                            this._elementActiveClassByClick(e);
                         });
                     });
                 });
             } else {
                 document.querySelectorAll(this.clickableElements).forEach(el => {
                     el.addEventListener('click', (e) => {
-                        this._setSlideActiveClassByClick(e);
+                        this._elementActiveClassByClick(e);
                     });
                 });
             }
@@ -117,109 +116,109 @@ class ActiveElements {
             this.swipeArea.addEventListener('touchend', function (event) {
                 var touchendX = event.changedTouches[0].screenX;
                 if (touchendX <= this.touchstartX && (this.touchstartX - touchendX) > 25) {
-                    self.nextSlide(); //Swiped left
+                    self.nextElement(); //Swiped left
                 }
 
                 if (touchendX >= this.touchstartX && (touchendX - this.touchstartX) > 25) {
-                    self.prevSlide(); //Swiped right
+                    self.prevElement(); //Swiped right
                 }
             }, false);
         }
     }
 
     removeAllActiveClass() {
-        this.activeElements.forEach(slideItem => {
-            slideItem.forEach(el => {
+        this.activeElements.forEach(element => {
+            element.forEach(el => {
                 el.classList.remove("active");
             });
         });
     }
 
-    firstSlideActive() {
+    firstElementActive() {
         this.removeAllActiveClass();
-        this.wrapper.dataset.slide = 1;
-        this.activeElements.forEach(slideItem => {
-            slideItem[0].classList.add("active");
+        this.wrapper.dataset.activeElement = 1;
+        this.activeElements.forEach(element => {
+            element[0].classList.add("active");
         });
     }
 
-    lastSlideActive() {
+    lastElementActive() {
         this.removeAllActiveClass();
-        this.wrapper.dataset.slide = this.elementsCount;
-        this.activeElements.forEach(slideItem => {
-            slideItem[slideItem.length - 1].classList.add("active");
+        this.wrapper.dataset.activeElement = this.elementsCount;
+        this.activeElements.forEach(element => {
+            element[element.length - 1].classList.add("active");
         });
     }
 
-    _setNextSlideActiveClass() {
-        this.wrapper.dataset.slide = parseInt(this.wrapper.dataset.slide) + 1;
-        this.activeElements.forEach(slideItem => {
+    _nextElementActiveClass() {
+        this.wrapper.dataset.activeElement = parseInt(this.wrapper.dataset.activeElement) + 1;
+        this.activeElements.forEach(element => {
 
             for (let i = 0; i < this.elementsCount; i++) {
-                if (slideItem[i].classList.contains('active')) {
-                    slideItem[i].classList.remove('active');
-                    slideItem[i].nextElementSibling.classList.add('active');
+                if (element[i].classList.contains('active')) {
+                    element[i].classList.remove('active');
+                    element[i].nextElementSibling.classList.add('active');
                     break;
                 }
             }
         });
     }
 
-    _setPrevSlideActiveClass() {
-        this.wrapper.dataset.slide = (parseInt(this.wrapper.dataset.slide) === 1) ? this.elementsCount : parseInt(this.wrapper.dataset.slide) - 1;
-        this.activeElements.forEach(slideItem => {
+    _prevElementActiveClass() {
+        this.wrapper.dataset.activeElement = (parseInt(this.wrapper.dataset.activeElement) === 1) ? this.elementsCount : parseInt(this.wrapper.dataset.activeElement) - 1;
+        this.activeElements.forEach(element => {
 
             for (let i = 0; i < this.elementsCount; i++) {
-                if (slideItem[i].classList.contains('active')) {
-                    slideItem[i].classList.remove('active');
-                    slideItem[i].previousElementSibling.classList.add('active');
+                if (element[i].classList.contains('active')) {
+                    element[i].classList.remove('active');
+                    element[i].previousElementSibling.classList.add('active');
                     break;
                 }
             }
         });
     }
 
-    _setSlideActiveClassByClick(event) {
-        var slideIndex = '';
+    _elementActiveClassByClick(event) {
+        var elementIndex = '';
         this.removeAllActiveClass();
 
         for (let io = 0; io < this.elementsGroupCount; io++) {
             for (let i = 0; i < this.elementsCount; i++) {
                 if (event.currentTarget.isSameNode(this.activeElements[io][i])) {
-                    slideIndex = i;
-                    this.wrapper.dataset.slide = slideIndex + 1;
+                    elementIndex = i;
+                    this.wrapper.dataset.activeElement = elementIndex + 1;
                     break;
                 }
             }
-            if (slideIndex) {
+            if (elementIndex) {
                 break;
             }
         }
 
         for (let io = 0; io < this.elementsGroupCount; io++) {
-            this.activeElements[io][slideIndex].classList.add('active');
+            this.activeElements[io][elementIndex].classList.add('active');
         }
     }
 
-    nextSlide() {
-        var slideLastOfType = this.wrapper.querySelector(this.elementClassName + '.active' + ':last-of-type');
-        if (slideLastOfType && !this.loop) {
+    nextElement() {
+        var elementLastOfType = this.wrapper.querySelector(this.elementClassName + '.active' + ':last-of-type');
+        if (elementLastOfType && !this.loop) {
             //do nothing
-        } else if (slideLastOfType) {
-            this.firstSlideActive();
+        } else if (elementLastOfType) {
+            this.firstElementActive();
         } else {
-            this._setNextSlideActiveClass();
+            this._nextElementActiveClass();
         }
     }
 
-    prevSlide() {
-        var slideFirstOfType = this.wrapper.querySelector(this.elementClassName + '.active' + ':first-of-type');
-        if (slideFirstOfType && !this.loop) {
+    prevElement() {
+        var elementFirstOfType = this.wrapper.querySelector(this.elementClassName + '.active' + ':first-of-type');
+        if (elementFirstOfType && !this.loop) {
             //do nothing
-        } else if (slideFirstOfType) {
-            this.lastSlideActive();
+        } else if (elementFirstOfType) {
+            this.lastElementActive();
         } else {
-            this._setPrevSlideActiveClass();
+            this._prevElementActiveClass();
         }
     }
 
