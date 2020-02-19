@@ -1,23 +1,28 @@
 {
-  "name": "active-slider",
+  "name": "active-elements",
   "version": "1.0.0",
-  "description": "Slider for CSS masters",
-  "main": "active-slider.js",
+  "description": "Library for CSS masters",
+  "main": "active-elements.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guycohen85/active-slider.git"
+    "url": "git+https://github.com/guycohen85/active-elements.git"
   },
   "keywords": [
+    "active elements",
+    "active element",
+    "active class",
+    "active",
     "slider",
-    "active-class"
+    "cards",
+    "groups of elements"
   ],
   "author": "Guy Cohen <guycohen85@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/guycohen85/active-slider/issues"
+    "url": "https://github.com/guycohen85/active-elements/issues"
   },
-  "homepage": "https://github.com/guycohen85/active-slider#readme"
+  "homepage": "https://github.com/guycohen85/active-elements#readme"
 }
