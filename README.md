@@ -1,5 +1,6 @@
 # Active Elements
 Library for CSS masters.
+Build whatever you need with the append active class.
 
 - **The Active Class** - Active-Elements has one job, adding an "active" class for your desired HTML tags.
 - **Keep your HTML beautiful** - Active Elements will not inject HTML, CSS or JS code.

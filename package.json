@@ -1,7 +1,7 @@
 {
   "name": "active-elements",
   "version": "1.0.0",
-  "description": "Library for CSS masters",
+  "description": "Library for CSS masters. Build whatever you need with the append active class",
   "main": "active-elements.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
