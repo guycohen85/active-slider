@@ -109,18 +109,18 @@ class ActiveElements {
     _swipeEvent(){
         if (this.swipeArea) {
             this.touchstartX = 0;
-            this.swipeArea.addEventListener('touchstart', function (event) {
+            this.swipeArea.addEventListener('touchstart', (event) => {
                 this.touchstartX = event.changedTouches[0].screenX;
             }, false);
 
-            this.swipeArea.addEventListener('touchend', function (event) {
+            this.swipeArea.addEventListener('touchend', (event) => {
                 var touchendX = event.changedTouches[0].screenX;
                 if (touchendX <= this.touchstartX && (this.touchstartX - touchendX) > 25) {
-                    self.nextElement(); //Swiped left
+                    this.nextElement(); //Swiped left
                 }
 
                 if (touchendX >= this.touchstartX && (touchendX - this.touchstartX) > 25) {
-                    self.prevElement(); //Swiped right
+                    this.prevElement(); //Swiped right
                 }
             }, false);
         }
