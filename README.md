@@ -1,25 +1,25 @@
-# Active Slider
-Slider for CSS masters.
+# Active Elements
+Library for CSS masters.
 
-- **The Active Class** - Active-Slider has one job, adding an "active" class for your desired HTML tags.
-- **Keep your HTML beautiful** - Active Slider will not inject HTML, CSS or JS code.
-- **Full control** - As a CSS master, you'll have full control over your slider with no injected Html or Css.
+- **The Active Class** - Active-Elements has one job, adding an "active" class for your desired HTML tags.
+- **Keep your HTML beautiful** - Active Elements will not inject HTML, CSS or JS code.
+- **Full control** - As a CSS master, you'll have full control over your markup with no injected Html or Css.
 
-There is one rule, slides group must have the same number of elements.
+There is one rule, active-elements group must have the same number of elements.
 For example: slide-images must have the same number of bullets elements.
 
 
 ## NPM
 
 ```
-npm install active-slider
+npm install active-elements
 ```
 
 ```javascript
-import ActiveSlider from 'active-slider';
+import ActiveElements from 'active-elements';
 
-new ActiveSlider({
-    sliderWrapper: '.slider-wrapper', 
+new ActiveElements({
+    wrapper: '.slider-wrapper', 
     activeElements: ['.slide-image', '.bullet'],
 }); 
 
