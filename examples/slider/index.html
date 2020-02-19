@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <div class="my-slider">
+
+        <h2>Active Slider</h2>
+      
+        <div class="slide-images-mask">
+          <img class="slide-image" src="https://bit.ly/2HrOv0p">
+          <img class="slide-image" src="https://bit.ly/2SL9ccV">
+          <img class="slide-image" src="https://bit.ly/38whADW">
+        </div>
+      
+        <div class="slide-texts">
+              <p class="slide-text">Black bicycle parked beside brown wooden shelf</p>
+          <p class="slide-text">Kitty wants food</p>
+          <p class="slide-text">Woman in blue dress standing near window</p>
+        </div>
+      
+        <div class="slide-bullets">
+          <div class="bullet"></div>
+          <div class="bullet"></div>
+          <div class="bullet"></div>
+        </div>
+      
+        <div class="sliderButtons">
+          <button class="prev">Previous</button>
+          <button class="next">Next</button>
+        </div>
+      
+        <p><a target="_blank" href="https://github.com/guycohen85/active-elements">Github</a></p>
+      
+      </div>
+          
+    <script src="../../active-elements.js"></script>
+
+    <script>
+    new ActiveElements({
+        wrapper: '.my-slider', 
+        activeElements: ['.slide-image', '.bullet', '.slide-text'],
+        swipeArea: '.slide-images-mask',
+        clickableElements: '.bullet',
+        prevNextButtons: ['.prev', '.next'],         
+        stopAutoPlayOnClick: ['.prev', '.next', '.slide-image'],
+    }); 
+    </script>
+    
+</body>
+</html>
+
+
+
+  
+  
+  
+  
+  
+  <!-- active-slider.min.js -->
+  

@@ -1,0 +1,41 @@
+.my-slider {
+    font-family:sans-serif;
+    text-align: center;
+}
+
+.slide-image, .slide-text {
+    display: none;
+    animation-name: fade;
+    animation-duration: .5s;
+    margin: 10px auto 0;
+}
+
+.slide-image.active, .slide-text.active {
+    display: block;
+}
+
+.slide-bullets {
+    display: flex;
+    justify-content: center;
+}
+
+.bullet {
+    width: 10px;
+    height: 10px;
+    background: #ddd;
+    border-radius: 50%;
+    border: 1px solid #aaa;
+    cursor: pointer;
+    margin: 10px 5px;
+}
+
+.bullet.active {
+    background: rgb(255, 221, 64);
+}
+
+
+/* Animations */
+@keyframes fade {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
