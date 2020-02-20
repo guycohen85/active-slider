@@ -104,13 +104,10 @@ mySlider.stopAutoplay();
 
 ## Examples
 
-Slider
-https://codepen.io/guycohen85/pen/GRJoxvw
+Slider - https://codepen.io/guycohen85/pen/GRJoxvw
 
-Cards
-https://codepen.io/guycohen85/pen/YzXqOPJ
+Cards - https://codepen.io/guycohen85/pen/YzXqOPJ
 
-Rubik's Cube
-https://codepen.io/guycohen85/pen/MWwjwKO
+Rubik's Cube - https://codepen.io/guycohen85/pen/MWwjwKO
 
 
