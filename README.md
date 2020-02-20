@@ -2,8 +2,8 @@
 Library for CSS masters.
 Build whatever you need with the active class.
 
-- **The Active Class** - Active-Elements has one job, adding an "active" class for your desired HTML tags.
-- **Keep your HTML beautiful** - Active Elements will not inject HTML, CSS or JS code.
+- **The Active Class** - Active-Elements library has one job, adding an "active" class for your desired HTML tags.
+- **Keep your HTML beautiful** - Active Elements library will not inject HTML, CSS or JS code.
 - **Full control** - As a CSS master, you'll have full control over your markup with no injected Html or Css.
 
 There is one rule, active-elements group must have the same number of elements.
@@ -79,25 +79,25 @@ var mySlider = new ActiveElements({
     activeElements: ['.slide-image', '.bullet'],
 }); 
 
-// Set the first element as active
+// Set the first element as active.
 mySlider.firstElementActive();
 
-// Set the last element as active
+// Set the last element as active.
 mySlider.lastElementActive();
 
-// Set the next element as active
+// Set the next element as active.
 mySlider.nextElement();
 
-// Set the previous element as active
+// Set the previous element as active.
 mySlider.prevElement();
 
-// Remove the active Class from all elements
+// Remove the active Class from all elements.
 mySlider.removeAllActiveClass();
 
-// Start autoplay
+// Start autoplay.
 mySlider.startAutoplay();
 
-// stop autoplay
+// stop autoplay.
 mySlider.stopAutoplay();
 
 ```
