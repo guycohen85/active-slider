@@ -27,7 +27,7 @@ new ActiveElements({
 ```
 
 ```html
-<div class="my-slider">
+<div class="slider-wrapper">
     
   <div>
     <img class="slide-image" src="https://bit.ly/2HrOv0p">
