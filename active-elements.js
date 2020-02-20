@@ -5,7 +5,8 @@ class ActiveElements {
         swipeArea = '', //(string)(optional) - Select the element that will be the swipe area. example: '.slide-images-container'
         clickableElements = '', //(array|string)(optional) - Add the active class to the clicked element. example: '.bullet'
         prevNextButtons = false, //(array)(optional) - Select the previous and next buttons. example: ['.prev', '.next']
-        autoPlay = 3500, //(number|boolean)(optional) - Default duration is 3500 milliseconds. set to false if no need for autoplay. default: 3500
+        autoPlay = true, //(boolean)(optional) - Is autoplay. Default: true
+        autoplaySpeed = 3500, //(number)(optional) - Autoplay duration in milliseconds. Default: 3500
         stopAutoPlayOnClick = false, //(string|array)(optional) - Select the elements to be the listeners for the click event in order to stop the autoplay. example: ['.prev', '.next']
         loop = true, //(boolean)(optional) - Loop elements. default: true
         firstElementActive = true //(boolean)(optional) - Set to false in order to remove the active class from the first elements as default
@@ -39,8 +40,9 @@ class ActiveElements {
         }
 
         //Autoplay
-        this.autoPlaySpeed = autoPlay;
-        if (this.autoPlaySpeed) {
+        this.autoPlaySpeed = autoplaySpeed;
+        this.autoPlay = autoPlay;
+        if (this.autoPlay) {
             this.startAutoPlay();
         }
 
