@@ -26,6 +26,22 @@ new ActiveElements({
 
 ```
 
+```html
+<div class="my-slider">
+  <h2>Active Elements</h2>
+  <div class="slide-images-mask">
+    <img class="slide-image" src="https://bit.ly/2HrOv0p">
+    <img class="slide-image" src="https://bit.ly/2SL9ccV">
+    <img class="slide-image" src="https://bit.ly/38whADW">
+  </div>
+  <div class="slide-bullets">
+    <div class="bullet"></div>
+    <div class="bullet"></div>
+    <div class="bullet"></div>
+  </div>
+</div>
+```
+
 ## Options
 - wrapper
 (string)(required) - Select the wrapper element.
