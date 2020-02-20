@@ -36,14 +36,14 @@ class ActiveElements {
 
         if(firstElementActive){
             this.wrapper.setAttribute("data-active-element", 1);
-            this.firstElementActive();
+            this.first();
         }
 
         //Autoplay
         this.autoPlaySpeed = autoplaySpeed;
         this.autoPlay = autoPlay;
         if (this.autoPlay) {
-            this.startAutoPlay();
+            this.autoplay();
         }
 
         //Add |prev|next| buttons
@@ -59,17 +59,17 @@ class ActiveElements {
     _addPrevNextButtons(prevNextButtons) {
         this.prevBtn = document.querySelector(prevNextButtons[0]);
         this.prevBtn.addEventListener('click', () => {
-            this.prevElement();
+            this.prev();
         });
         this.nextBtn = document.querySelector(prevNextButtons[1]);
         this.nextBtn.addEventListener('click', () => {
-            this.nextElement();
+            this.next();
         });
     }
 
-    startAutoPlay() {  
+    autoplay() {  
         this.interval = setInterval(() => {
-            this.nextElement();
+            this.next();
         }, this.autoPlaySpeed);
         
         if(this.stopAutoPlayOnClick){
@@ -118,17 +118,17 @@ class ActiveElements {
             this.swipeArea.addEventListener('touchend', (event) => {
                 var touchendX = event.changedTouches[0].screenX;
                 if (touchendX <= this.touchstartX && (this.touchstartX - touchendX) > 25) {
-                    this.nextElement(); //Swiped left
+                    this.next(); //Swiped left
                 }
 
                 if (touchendX >= this.touchstartX && (touchendX - this.touchstartX) > 25) {
-                    this.prevElement(); //Swiped right
+                    this.prev(); //Swiped right
                 }
             }, false);
         }
     }
 
-    removeAllActiveClass() {
+    removeAll() {
         this.activeElements.forEach(element => {
             element.forEach(el => {
                 el.classList.remove("active");
@@ -136,16 +136,16 @@ class ActiveElements {
         });
     }
 
-    firstElementActive() {
-        this.removeAllActiveClass();
+    first() {
+        this.removeAll();
         this.wrapper.dataset.activeElement = 1;
         this.activeElements.forEach(element => {
             element[0].classList.add("active");
         });
     }
 
-    lastElementActive() {
-        this.removeAllActiveClass();
+    last() {
+        this.removeAll();
         this.wrapper.dataset.activeElement = this.elementsCount;
         this.activeElements.forEach(element => {
             element[element.length - 1].classList.add("active");
@@ -182,7 +182,7 @@ class ActiveElements {
 
     _elementActiveClassByClick(event) {
         var elementIndex = '';
-        this.removeAllActiveClass();
+        this.removeAll();
 
         for (let io = 0; io < this.elementsGroupCount; io++) {
             for (let i = 0; i < this.elementsCount; i++) {
@@ -202,23 +202,23 @@ class ActiveElements {
         }
     }
 
-    nextElement() {
+    next() {
         var elementLastOfType = this.wrapper.querySelector(this.elementClassName + '.active' + ':last-of-type');
         if (elementLastOfType && !this.loop) {
             //do nothing
         } else if (elementLastOfType) {
-            this.firstElementActive();
+            this.first();
         } else {
             this._nextElementActiveClass();
         }
     }
 
-    prevElement() {
+    prev() {
         var elementFirstOfType = this.wrapper.querySelector(this.elementClassName + '.active' + ':first-of-type');
         if (elementFirstOfType && !this.loop) {
             //do nothing
         } else if (elementFirstOfType) {
-            this.lastElementActive();
+            this.last();
         } else {
             this._prevElementActiveClass();
         }
