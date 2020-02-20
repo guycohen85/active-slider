@@ -80,22 +80,22 @@ var mySlider = new ActiveElements({
 }); 
 
 // Set the first element as active.
-mySlider.firstElementActive();
+mySlider.first();
 
 // Set the last element as active.
-mySlider.lastElementActive();
+mySlider.last();
 
 // Set the next element as active.
-mySlider.nextElement();
+mySlider.next();
 
 // Set the previous element as active.
-mySlider.prevElement();
+mySlider.prev();
 
 // Remove the active Class from all elements.
-mySlider.removeAllActiveClass();
+mySlider.removeAll();
 
 // Start autoplay.
-mySlider.startAutoplay();
+mySlider.autoplay();
 
 // stop autoplay.
 mySlider.stopAutoplay();
