@@ -26,7 +26,7 @@ new ActiveElements({
 
 ```
 
-## Parameters
+## Options
 - wrapper
 (string)(required) - Select the wrapper element.
 Example: '.slider'
