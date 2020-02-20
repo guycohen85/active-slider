@@ -1,6 +1,6 @@
 # Active Elements
 Library for CSS masters.
-Build whatever you need with the append active class.
+Build whatever you need with the active class.
 
 - **The Active Class** - Active-Elements has one job, adding an "active" class for your desired HTML tags.
 - **Keep your HTML beautiful** - Active Elements will not inject HTML, CSS or JS code.
@@ -47,8 +47,12 @@ Example: '.bullet'
 (array)(optional) - Select the previous and next buttons.
 Example: ['.prev', '.next']
 
-- autoPlay
-(number|boolean)(optional)  - Default duration is 3500 milliseconds. set to false if no need for autoplay.
+- autoplay
+(boolean)(optional) - Is autoplay.
+Default: true
+
+- autoplaySpeed
+(number)(optional) - Autoplay duration in milliseconds.
 Default: 3500
 
 - stopAutoPlayOnClick
@@ -63,5 +67,50 @@ Default: true
 (boolean)(optional) - Set to false in order to remove the active class from the first elements as default.
 Default: true
 
-## Example
+## Methods
+
+Get more control with the object methods.
+
+```javascript
+import ActiveElements from 'active-elements';
+
+var mySlider = new ActiveElements({
+    wrapper: '.slider-wrapper', 
+    activeElements: ['.slide-image', '.bullet'],
+}); 
+
+// Set the first element as active
+mySlider.firstElementActive();
+
+// Set the last element as active
+mySlider.lastElementActive();
+
+// Set the next element as active
+mySlider.nextElement();
+
+// Set the previous element as active
+mySlider.prevElement();
+
+// Remove the active Class from all elements
+mySlider.removeAllActiveClass();
+
+// Start autoplay
+mySlider.startAutoplay();
+
+// stop autoplay
+mySlider.stopAutoplay();
+
+```
+
+## Examples
+
+Slider
 https://codepen.io/guycohen85/pen/GRJoxvw
+
+Cards
+https://codepen.io/guycohen85/pen/YzXqOPJ
+
+Rubik's Cube
+https://codepen.io/guycohen85/pen/MWwjwKO
+
+
