@@ -1,0 +1,91 @@
+
+body { font-family: sans-serif; }
+
+.playground {
+  box-sizing: border-box;
+  perspective: 600px;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.cube {
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(100px);
+  transition: transform 1s;
+  transform-origin: 50% 50% 50px;
+}
+
+.cube_face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color:#fff;
+  background-size:cover;
+  background-color: #fff;
+}
+
+.orange  {
+  transform-origin: 50% 100%;
+  transform: rotateX(  90deg);
+  
+  background-image: url('https://drive.google.com/uc?id=1J36Et9x7dheRd60o6HXbZm_nr1W3QPto&export=download');
+}
+.green  {
+  
+  transform-origin: 0% 0%;
+  transform: rotateY(  90deg);
+  background-image: url('https://drive.google.com/uc?id=1b5mdhyBkzNr78-CP4ndTfTHFxgiv2F6Z&export=download');
+}
+.red   {
+  transform: rotateY(   0deg);
+  background-image: url('https://drive.google.com/uc?id=1GhMY6sDYtDyH61DJcsSLmHAIRy5-sr_q&export=download');
+}
+.yellow   {
+  transform-origin: 0% 0%;
+  transform: rotateX( -90deg);
+  background-image: url('https://drive.google.com/uc?id=1zQBG6Z7BLfnHvt9vRrm_nbzam6r7JUQw&export=download');
+}
+.blue    {
+  transform-origin: 100% 50%;
+  transform: rotateY( -90deg);
+  background-image: url('https://drive.google.com/uc?id=1IwC_AYpN_5EwpbWJY39vmWRH-wGo4NCT&export=download');
+}
+.white {
+  transform-origin: 50% 50%;
+  transform: rotateY(-180deg) translateZ(100px);
+  background-image: url('https://drive.google.com/uc?id=1IQL_BIvuKuKZ_w7UKj984PNoDlhuY0KD&export=download');
+}
+
+.playground[data-active-element="1"] .cube{ transform:  rotateY(   0deg) translateZ(100px); }
+.playground[data-active-element="2"] .cube{ transform:  rotateY( -90deg) translateZ(100px); }
+.playground[data-active-element="3"] .cube{ transform:  rotateY(-180deg) translateZ(100px); }
+.playground[data-active-element="4"] .cube{ transform:  rotateY(  90deg) translateZ(100px); }
+.playground[data-active-element="5"] .cube{ transform:  rotateX( -90deg) translateZ(100px); }
+.playground[data-active-element="6"] .cube{ transform:  rotateX(  90deg) translateZ(100px); }
+
+.buttons{
+  margin-top:20px;
+}
+
+button{
+  background: #455ea5;
+  border: none;
+  color: #fff;
+  border-radius: 3px;
+  padding: 4px 15px;
+  outline:none;
+  border:1px solid #eee;
+  cursor: pointer;
+  border: 1px solid #000;
+}
+
+.button-red{background:#c41618;}
+.button-blue{background:#1064be;}
+.button-white{background:#edecf2;}
+.button-green{background:#25ea69;}
+.button-yellow{background:#dbf62d;}
+.button-orange{background:#ff4d11;}

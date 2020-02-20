@@ -5,6 +5,8 @@ body {
 }
 
 .board {
+    color:#fff;
+    text-align: center;
     padding-top: 20px;
     background: #1d1e22;
     height: 100vh;

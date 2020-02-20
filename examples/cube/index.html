@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <div class="playground">
+
+        <h1>Active Elements</h1>
+        
+        <div class="cube">
+            <div class="cube_face red"></div>
+            <div class="cube_face blue"></div>
+            <div class="cube_face white"></div>
+            <div class="cube_face green"></div>
+            <div class="cube_face yellow"></div>
+            <div class="cube_face orange"></div>
+        </div>
+        
+        <div class="buttons">
+            <button class="button-red"></button>
+            <button class="button-blue"></button>
+            <button class="button-white"></button>
+            <button class="button-green"></button>
+            <button class="button-yellow"></button>
+            <button class="button-orange"></button>
+        </div>
+        
+    </div>
+          
+<script src="../../active-elements.js"></script>
+
+<script>
+    new ActiveElements({
+        wrapper: '.playground', 
+        activeElements: ['.cube_face', '.buttons button'],
+        clickableElements: '.buttons button',
+        swipeArea: '.cube',
+        autoPlay: false,
+    }); 
+</script>
+    
+</body>
+</html>
