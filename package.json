@@ -1,6 +1,6 @@
 {
   "name": "active-elements",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Library for CSS masters. Build whatever you need with the append active class",
   "main": "active-elements.js",
   "scripts": {
