@@ -1,28 +1,29 @@
 {
-  "name": "active-elements",
+  "name": "active-slider",
   "version": "1.0.2",
   "description": "Library for CSS masters. Build whatever you need with the append active class",
-  "main": "active-elements.js",
+  "main": "active-slider.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guycohen85/active-elements.git"
+    "url": "git+https://github.com/guycohen85/active-slider.git"
   },
   "keywords": [
+    "slider",
+    "carousel",
+    "cards",
     "active elements",
     "active element",
     "active class",
     "active",
-    "slider",
-    "cards",
     "groups of elements"
   ],
   "author": "Guy Cohen <guycohen85@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/guycohen85/active-elements/issues"
+    "url": "https://github.com/guycohen85/active-slider/issues"
   },
-  "homepage": "https://github.com/guycohen85/active-elements#readme"
+  "homepage": "https://github.com/guycohen85/active-slider#readme"
 }

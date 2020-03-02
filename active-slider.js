@@ -1,4 +1,4 @@
-class ActiveElements {
+class ActiveSlider {
     constructor({
         wrapper = '', //(string)(required) - Select the wrapper element. example: '.slider'
         activeElements = '', //(array|string)(required) - Select elements to add the active class. example: ['.slide-image', '.bullet']
@@ -35,7 +35,7 @@ class ActiveElements {
         this.elementsCount = this.activeElements[0].length;
 
         if(firstElementActive){
-            this.wrapper.setAttribute("data-active-element", 1);
+            this.wrapper.setAttribute("data-active", 1);
             this.first();
         }
 
@@ -138,7 +138,7 @@ class ActiveElements {
 
     first() {
         this.removeAll();
-        this.wrapper.dataset.activeElement = 1;
+        this.wrapper.dataset.active = 1;
         this.activeElements.forEach(element => {
             element[0].classList.add("active");
         });
@@ -146,14 +146,14 @@ class ActiveElements {
 
     last() {
         this.removeAll();
-        this.wrapper.dataset.activeElement = this.elementsCount;
+        this.wrapper.dataset.active = this.elementsCount;
         this.activeElements.forEach(element => {
             element[element.length - 1].classList.add("active");
         });
     }
 
     _nextElementActiveClass() {
-        this.wrapper.dataset.activeElement = parseInt(this.wrapper.dataset.activeElement) + 1;
+        this.wrapper.dataset.active = parseInt(this.wrapper.dataset.active) + 1;
         this.activeElements.forEach(element => {
 
             for (let i = 0; i < this.elementsCount; i++) {
@@ -167,7 +167,7 @@ class ActiveElements {
     }
 
     _prevElementActiveClass() {
-        this.wrapper.dataset.activeElement = (parseInt(this.wrapper.dataset.activeElement) === 1) ? this.elementsCount : parseInt(this.wrapper.dataset.activeElement) - 1;
+        this.wrapper.dataset.active = (parseInt(this.wrapper.dataset.active) === 1) ? this.elementsCount : parseInt(this.wrapper.dataset.active) - 1;
         this.activeElements.forEach(element => {
 
             for (let i = 0; i < this.elementsCount; i++) {
@@ -188,7 +188,7 @@ class ActiveElements {
             for (let i = 0; i < this.elementsCount; i++) {
                 if (event.currentTarget.isSameNode(this.activeElements[io][i])) {
                     elementIndex = i;
-                    this.wrapper.dataset.activeElement = elementIndex + 1;
+                    this.wrapper.dataset.active = elementIndex + 1;
                     break;
                 }
             }

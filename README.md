@@ -1,25 +1,26 @@
-# Active Elements
-Library for CSS masters.
-Build whatever you need with the active class.
+# Active Slider
+Did you ever happen when trying to build a carousel slider with a js library, and lost control over your slider design?
 
-- **The Active Class** - Active-Elements library has one job, adding an "active" class for your desired HTML tags.
-- **Keep your HTML beautiful** - Active Elements library will not inject HTML, CSS or JS code.
-- **Full control** - As a CSS master, you'll have full control over your markup with no injected Html or Css.
+Active-Slider will give you the freedom to build and design whatever you need by only adding an active class. By that, you are not limited to only building a slider, but you can also build  cards or even 3D elements (Examples at the end of the page).
+
+- **The Active Class** - Active-Slider library has one job, adding an "active" class for your desired HTML tags.
+- **Keep your HTML beautiful** - Active Slider library will not inject HTML, CSS or JS code.
+- **Full control** - As a CSS master, you'll have full control over your slider with no injected Html or Css.
 
 There is one rule, active-elements group must have the same number of elements.
-For example: slide-images must have the same number of bullets elements.
+For example: .slide-image elements must have the same number of .bullet elements.
 
 
 ## NPM
 
 ```
-npm install active-elements
+npm install active-slider
 ```
 
 ```javascript
-import ActiveElements from 'active-elements';
+import ActiveSlider from 'active-slider';
 
-new ActiveElements({
+new ActiveSlider({
     wrapper: '.slider-wrapper', 
     activeElements: ['.slide-image', '.bullet'],
 }); 
@@ -90,11 +91,11 @@ Default: true
 Get more control with the object methods.
 
 ```javascript
-import ActiveElements from 'active-elements';
+import ActiveSlider from 'active-slider';
 
-var mySlider = new ActiveElements({
+var mySlider = new ActiveSlider({
     wrapper: '.slider-wrapper', 
-    activeElements: ['.slide-image', '.bullet'],
+    activeSlider: ['.slide-image', '.bullet'],
 }); 
 
 // Set the first element as active.
@@ -109,7 +110,7 @@ mySlider.next();
 // Set the previous element as active.
 mySlider.prev();
 
-// Remove the active Class from all elements.
+// Remove the active Class from all slides.
 mySlider.removeAll();
 
 // Start autoplay.

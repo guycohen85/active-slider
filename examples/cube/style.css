@@ -60,12 +60,12 @@ body { font-family: sans-serif; }
   background-image: url('https://drive.google.com/uc?id=1IQL_BIvuKuKZ_w7UKj984PNoDlhuY0KD&export=download');
 }
 
-.playground[data-active-element="1"] .cube{ transform:  rotateY(   0deg) translateZ(100px); }
-.playground[data-active-element="2"] .cube{ transform:  rotateY( -90deg) translateZ(100px); }
-.playground[data-active-element="3"] .cube{ transform:  rotateY(-180deg) translateZ(100px); }
-.playground[data-active-element="4"] .cube{ transform:  rotateY(  90deg) translateZ(100px); }
-.playground[data-active-element="5"] .cube{ transform:  rotateX( -90deg) translateZ(100px); }
-.playground[data-active-element="6"] .cube{ transform:  rotateX(  90deg) translateZ(100px); }
+.playground[data-active="1"] .cube{ transform:  rotateY(   0deg) translateZ(100px); }
+.playground[data-active="2"] .cube{ transform:  rotateY( -90deg) translateZ(100px); }
+.playground[data-active="3"] .cube{ transform:  rotateY(-180deg) translateZ(100px); }
+.playground[data-active="4"] .cube{ transform:  rotateY(  90deg) translateZ(100px); }
+.playground[data-active="5"] .cube{ transform:  rotateX( -90deg) translateZ(100px); }
+.playground[data-active="6"] .cube{ transform:  rotateX(  90deg) translateZ(100px); }
 
 .buttons{
   margin-top:20px;
