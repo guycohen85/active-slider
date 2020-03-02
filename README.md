@@ -1,7 +1,7 @@
 # Active Slider
-Did you ever happen when trying to build a carousel slider with a js library, and lost control over your slider design?
+Did you ever happen when trying to build a carousel slider with a js library and lost control over your slider design?
 
-Active-Slider will give you the freedom to build and design whatever you need by only adding an active class. By that, you are not limited to only building a slider, but you can also build  cards or even 3D elements (Examples at the end of the page).
+Active-Slider will give you the freedom to build and design whatever you need by only adding an active class. By that, you are not limited to only building a slider, but you can also build  cards or even 3D elements (examples at the end of the page).
 
 - **The Active Class** - Active-Slider library has one job, adding an "active" class for your desired HTML tags.
 - **Keep your HTML beautiful** - Active Slider library will not inject HTML, CSS or JS code.
